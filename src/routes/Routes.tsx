@@ -4,6 +4,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import Loading from '../components/common/Loading/Loading';
+import Header from '../components/Header/Header';
 import * as routes from './routes';
 
 const useStyles = makeStyles(() => ({
@@ -27,7 +28,7 @@ const Routes: React.FC = () => {
 
   return (
     <div className={classes.main}>
-      <div>Header</div>
+      <Header />
       <div className={classes.page}>
         <Switch>
           <ProtectedRoute exact path={routes.codeEditor} component={() => <div>Code Editor</div>}></ProtectedRoute>
