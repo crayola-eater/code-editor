@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
+import ProgrammingLanguagesList from '../../components/Home/ProgrammingLanguagesList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,7 @@ const Home: React.FC = () => {
   return (
     <div className={classes.root}>
       <div className={classes.welcomeMessage}>Welcome to the Code Editor!</div>
+      <ProgrammingLanguagesList />
     </div>
   );
 };
