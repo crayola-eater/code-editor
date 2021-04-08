@@ -4,6 +4,7 @@ import { AppBar, makeStyles, Toolbar, Typography, Switch } from '@material-ui/co
 import DarkModeIcon from '@material-ui/icons/Brightness2';
 import { toggleDarkMode } from '../../store/darkmode/reducer';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import UnauthenticatedButtons from './UnauthenticatedButtons';
 
 const useStyles = makeStyles({
   title: {
@@ -26,7 +27,7 @@ const Header: React.FC = () => {
         </Typography>
         <DarkModeIcon />
         <Switch onChange={onChangeDarkMode} color="default" checked={darkMode} />
-        {isAuthenticated ? <div>Authenticated buttons</div> : <div>Unauthenticated buttons</div>}
+        {isAuthenticated ? <div>Authenticated buttons</div> : <UnauthenticatedButtons />}
       </Toolbar>
     </AppBar>
   );
