@@ -43,6 +43,9 @@ const filesSlice = createSlice({
         ...state.userFiles.slice(indexToUpdate + 1),
       ];
     },
+    setEditorActiveFile(state, action: PayloadAction<string | null>) {
+      state.editorActiveFile = action.payload;
+    },
   },
 });
 
