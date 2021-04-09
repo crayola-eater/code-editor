@@ -24,6 +24,9 @@ const filesSlice = createSlice({
     addActiveFiles(state, action: PayloadAction<string>) {
       state.activeFiles = [...state.activeFiles, action.payload];
     },
+    removeActiveFiles(state, action: PayloadAction<string>) {
+      state.activeFiles = state.activeFiles.filter((fileId) => fileId !== action.payload);
+    },
   },
 });
 
