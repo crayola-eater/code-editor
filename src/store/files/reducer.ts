@@ -27,6 +27,22 @@ const filesSlice = createSlice({
     removeActiveFiles(state, action: PayloadAction<string>) {
       state.activeFiles = state.activeFiles.filter((fileId) => fileId !== action.payload);
     },
+    updateFileCode(state, action: PayloadAction<{ fileId: string; newCode: string }>) {
+      const { fileId, newCode } = action.payload;
+      const indexToUpdate = state.userFiles.findIndex(({ id }) => id === fileId);
+
+      if (-1 === indexToUpdate) {
+        throw new Error(`Failed to update file. No file with id ${fileId} found.`);
+      }
+
+      const updatedFile = { ...state.userFiles[indexToUpdate], code: newCode };
+
+      state.userFiles = [
+        ...state.userFiles.slice(0, indexToUpdate),
+        updatedFile,
+        ...state.userFiles.slice(indexToUpdate + 1),
+      ];
+    },
   },
 });
 
