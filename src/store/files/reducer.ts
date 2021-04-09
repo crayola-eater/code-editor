@@ -21,6 +21,9 @@ const filesSlice = createSlice({
       state.userFiles = [...action.payload];
       state.activeFiles = [];
     },
+    addActiveFiles(state, action: PayloadAction<string>) {
+      state.activeFiles = [...state.activeFiles, action.payload];
+    },
   },
 });
 
