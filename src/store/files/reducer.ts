@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import UserFile from '../../types/UserFile';
 
 export interface FilesState {
@@ -16,7 +16,12 @@ export const initialState: FilesState = {
 const filesSlice = createSlice({
   name: 'files',
   initialState,
-  reducers: {},
+  reducers: {
+    setFiles(state, action: PayloadAction<UserFile[]>) {
+      state.userFiles = [...action.payload];
+      state.activeFiles = [];
+    },
+  },
 });
 
 const filesReducer = filesSlice.reducer;
