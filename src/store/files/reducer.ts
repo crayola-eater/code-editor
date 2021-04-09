@@ -49,5 +49,6 @@ const filesSlice = createSlice({
   },
 });
 
+export const { setFiles, addActiveFiles, removeActiveFiles, updateFileCode, setEditorActiveFile } = filesSlice.actions;
 const filesReducer = filesSlice.reducer;
 export default filesReducer;
