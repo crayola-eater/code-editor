@@ -1,5 +1,7 @@
 import { Button, makeStyles } from '@material-ui/core';
 import React, { useRef } from 'react';
+import { useAppDispatch } from '../../../store/hooks';
+import readFiles from '../../../store/thunks/readFiles';
 import { commonColours } from '../../../theme/colours';
 
 const useStyles = makeStyles(() => ({
@@ -14,13 +16,20 @@ const useStyles = makeStyles(() => ({
 const OpenWorkspace: React.FC = () => {
   const classes = useStyles();
   const directoryInputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
 
   const onClick = () => {
     directoryInputRef.current?.click();
   };
 
-  const onFilesUploaded = (...args: any[]) => {
-    console.log('Files uploaded', ...args);
+  const onFilesUploaded: React.ChangeEventHandler<HTMLInputElement> = async ({ target: { files } }) => {
+    if (files) {
+      try {
+        await dispatch(readFiles(files));
+      } catch (e) {
+        console.log(e);
+      }
+    }
   };
 
   return (
