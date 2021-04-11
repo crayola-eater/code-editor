@@ -25,16 +25,16 @@ const useStyles = makeStyles((theme) => ({
 const FileViewer: React.FC = () => {
   const classes = useStyles();
   const fileViewerData = useAppSelector(selectFileViewerData);
-  const renderTree = (nodes: FileViewerStructure) => {
+  const renderTree = (node: FileViewerStructure) => {
     return (
       <TreeItem
         className={classes.treeItem}
-        key={nodes.id}
-        nodeId={nodes.id}
-        label={nodes.name}
-        endIcon={<ExtensionIcon extension={nodes.extension as any} />}
+        key={node.id}
+        nodeId={node.id}
+        label={node.name}
+        endIcon={<ExtensionIcon extension={node.extension as any} />}
       >
-        {nodes.children?.map(renderTree) ?? null}
+        {node.children?.map(renderTree) ?? null}
       </TreeItem>
     );
   };
