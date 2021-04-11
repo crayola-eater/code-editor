@@ -2,10 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { Folder, FolderOpen } from '@material-ui/icons';
 import { TreeItem, TreeView } from '@material-ui/lab';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import selectFileViewerData from '../../../store/selectors/selectFileViewerData/selectFileViewerData';
 import FileViewerStructure from '../../../types/FileViewerStructure';
 import ExtensionIcon from '../ExtensionIcon/ExtensionIcon';
+import openFile from '../../../store/thunks/openFile/openFile';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,12 @@ const useStyles = makeStyles((theme) => ({
 const FileViewer: React.FC = () => {
   const classes = useStyles();
   const fileViewerData = useAppSelector(selectFileViewerData);
+  const dispatch = useAppDispatch();
+
+  const onSelectNode = (node: FileViewerStructure) => {
+    dispatch(openFile(node));
+  };
+
   const renderTree = (node: FileViewerStructure) => {
     return (
       <TreeItem
@@ -33,6 +40,7 @@ const FileViewer: React.FC = () => {
         nodeId={node.id}
         label={node.name}
         endIcon={<ExtensionIcon extension={node.extension as any} />}
+        onDoubleClick={() => onSelectNode(node)}
       >
         {node.children?.map(renderTree) ?? null}
       </TreeItem>
