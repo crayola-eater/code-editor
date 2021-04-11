@@ -12,7 +12,7 @@ import PythonIcon from '../../../assets/images/python.png';
 import RubyIcon from '../../../assets/images/ruby.png';
 import TypeScriptIcon from '../../../assets/images/typescript.png';
 import ReactIcon from '../../../assets/images/react.png';
-import SupportedExtensions from '../../../constants/supportedExtensions';
+import type { SupportedExtensions } from '../../../constants/supportedExtensions';
 
 const useStyles = makeStyles(() => ({
   icon: {
