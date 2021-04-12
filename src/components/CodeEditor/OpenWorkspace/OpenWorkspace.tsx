@@ -1,7 +1,7 @@
 import { Button, makeStyles } from '@material-ui/core';
 import React, { useRef } from 'react';
 import { useAppDispatch } from '../../../store/hooks';
-import readFiles from '../../../store/thunks/readFiles';
+import readFiles from '../../../store/thunks/readFiles/readFiles';
 import { commonColours } from '../../../theme/colours';
 
 const useStyles = makeStyles(() => ({

@@ -1,8 +1,8 @@
-import CustomFile from '../../types/CustomFile';
-import UserFile from '../../types/UserFile';
+import CustomFile from '../../../types/CustomFile';
+import UserFile from '../../../types/UserFile';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { setFiles } from '../reducers/files/reducer';
+import { setFiles } from '../../reducers/files/reducer';
 
 const readSingleFile = (file: CustomFile): Promise<UserFile> => {
   return new Promise((resolve) => {
