@@ -39,7 +39,7 @@ const FileViewer: React.FC = () => {
         key={node.id}
         nodeId={node.id}
         label={node.name}
-        endIcon={<ExtensionIcon extension={node.extension as any} />}
+        endIcon={<ExtensionIcon extension={node.extension?.toUpperCase() as any} />}
         onDoubleClick={() => onSelectNode(node)}
       >
         {node.children?.map(renderTree) ?? null}
