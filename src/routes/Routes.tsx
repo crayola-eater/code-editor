@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from 'react-router';
 import ProtectedRoute from '../auth/ProtectedRoute';
 import Loading from '../components/common/Loading/Loading';
 import Header from '../components/Header/Header';
+import CodeEditor from '../pages/CodeEditor/CodeEditor';
 import Home from '../pages/Home/Home';
 import * as routes from './routes';
 
@@ -32,7 +33,9 @@ const Routes: React.FC = () => {
       <Header />
       <div className={classes.page}>
         <Switch>
-          <ProtectedRoute exact path={routes.codeEditor} component={() => <div>Code Editor</div>}></ProtectedRoute>
+          <ProtectedRoute exact path={routes.codeEditor}>
+            {CodeEditor}
+          </ProtectedRoute>
           <Route exact path={routes.home}>
             {isAuthenticated ? <Redirect to={routes.codeEditor} /> : <Home />}
           </Route>
