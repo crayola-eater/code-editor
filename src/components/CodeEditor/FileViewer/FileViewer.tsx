@@ -47,7 +47,7 @@ const FileViewer: React.FC = () => {
     );
   };
 
-  if (0 === Object.keys(fileViewerData).length) {
+  if (!fileViewerData || 0 === Object.keys(fileViewerData).length) {
     return <div className={classes.emptyMessage}>No files!</div>;
   }
 
