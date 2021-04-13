@@ -8,7 +8,7 @@ const openFile = (node: FileViewerStructure) => {
   return (dispatch: Dispatch, getState: () => RootState) => {
     const { extension: fileExtension = '', id: fileId, children } = node;
 
-    if (children || !supportedExtensions.hasOwnProperty(fileExtension)) {
+    if (children || !supportedExtensions.hasOwnProperty(fileExtension.toUpperCase())) {
       return;
     }
 
