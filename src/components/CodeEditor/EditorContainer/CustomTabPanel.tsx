@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import UserFile from '../../../types/UserFile';
+import CustomMonacoEditor from './CustomMonacoEditor';
 
 interface CustomTabPanelProps {
   activeFile: UserFile;
@@ -17,7 +18,7 @@ const CustomTabPanel: React.FC<CustomTabPanelProps> = ({ activeFile, editorActiv
   const classes = useStyles();
   return (
     <div className={classes.root} role="tabpanel" hidden={editorActiveFile !== activeFile.id}>
-      Monaco Code Editor
+      <CustomMonacoEditor activeFile={activeFile} />
     </div>
   );
 };
