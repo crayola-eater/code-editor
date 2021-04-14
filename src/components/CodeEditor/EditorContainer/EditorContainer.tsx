@@ -3,6 +3,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { setEditorActiveFile } from '../../../store/reducers/files/reducer';
 import selectActiveFiles from '../../../store/selectors/selectActiveFiles/selectActiveFiles';
+import CustomTabLabel from './CustomTabLabel';
 import CustomTabPanel from './CustomTabPanel';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +51,7 @@ const EditorContainer: React.FC = () => {
           onChange={onTabClick}
         >
           {activeFiles.map((file) => (
-            <Tab key={file.id} label={file.name} />
+            <Tab key={file.id} label={<CustomTabLabel activeFile={file} />} />
           ))}
         </Tabs>
       </AppBar>
